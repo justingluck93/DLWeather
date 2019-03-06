@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Current Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DLWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CurrentWeatherViewController" customModule="DLWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,24 +21,28 @@
                             <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backGround" translatesAutoresizingMaskIntoConstraints="NO" id="VZj-1i-C21">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsI-Lo-YfD">
-                                <rect key="frame" x="118" y="273" width="140" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="z9v-g7-tWv">
+                                <rect key="frame" x="169" y="325" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ºF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsI-Lo-YfD">
+                                <rect key="frame" x="93" y="130" width="181" height="171"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="z9v-g7-tWv">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" red="0.11581165140000001" green="1" blue="0.0" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VZj-1i-C21" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5jf-5o-IWa"/>
+                            <constraint firstItem="z9v-g7-tWv" firstAttribute="centerX" secondItem="VZj-1i-C21" secondAttribute="centerX" id="Fgt-6o-7dp"/>
                             <constraint firstItem="VZj-1i-C21" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IvE-5J-xpV"/>
                             <constraint firstItem="VZj-1i-C21" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="PqO-hw-TU0"/>
+                            <constraint firstItem="FsI-Lo-YfD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="110" id="Xbf-nW-aaH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FsI-Lo-YfD" secondAttribute="trailing" constant="101" id="YMB-CT-LcY"/>
+                            <constraint firstItem="z9v-g7-tWv" firstAttribute="top" secondItem="FsI-Lo-YfD" secondAttribute="bottom" constant="24" id="Zaw-OQ-iNm"/>
+                            <constraint firstItem="FsI-Lo-YfD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="93" id="arf-dY-7uY"/>
+                            <constraint firstItem="z9v-g7-tWv" firstAttribute="centerY" secondItem="VZj-1i-C21" secondAttribute="centerY" id="lod-LP-a6G"/>
                             <constraint firstItem="VZj-1i-C21" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uJD-hL-OZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CurrentWeatherViewController.swift
 //  DLWeather
 //
 //  Created by JustinCaty<3 on 3/5/19.
@@ -9,11 +9,12 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class CurrentWeatherViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    
     @IBOutlet weak var tempLabel: UILabel!
+    
+    var weatherModel = WeatherModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
