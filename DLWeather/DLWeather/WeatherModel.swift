@@ -10,6 +10,12 @@ import Foundation
 import Moya
 
 class WeatherModel {
+   let provider = MoyaProvider<WeatherServices>()
+    
+    func getCurrentWeather() {
+        
+    }
+  
     
 }
 

@@ -16,6 +16,7 @@
 		D0A69AAD222F62AC00B8CF5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A69AAB222F62AC00B8CF5C /* LaunchScreen.storyboard */; };
 		D0A69AB8222F62AC00B8CF5C /* DLWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A69AB7222F62AC00B8CF5C /* DLWeatherTests.swift */; };
 		D0A69AC3222F6BA300B8CF5C /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A69AC2222F6BA300B8CF5C /* WeatherModel.swift */; };
+		D0A69AC5222F6C8900B8CF5C /* WeatherServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A69AC4222F6C8900B8CF5C /* WeatherServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		D0A69AB7222F62AC00B8CF5C /* DLWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLWeatherTests.swift; sourceTree = "<group>"; };
 		D0A69AB9222F62AC00B8CF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A69AC2222F6BA300B8CF5C /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		D0A69AC4222F6C8900B8CF5C /* WeatherServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServices.swift; sourceTree = "<group>"; };
 		D84C56357E99C286035BCE63 /* Pods_DLWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC76EB81D65AD47AFBF9E5E2 /* Pods-DLWeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLWeatherTests.release.xcconfig"; path = "Target Support Files/Pods-DLWeatherTests/Pods-DLWeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				D0A69AAB222F62AC00B8CF5C /* LaunchScreen.storyboard */,
 				D0A69AAE222F62AC00B8CF5C /* Info.plist */,
 				D0A69AC2222F6BA300B8CF5C /* WeatherModel.swift */,
+				D0A69AC4222F6C8900B8CF5C /* WeatherServices.swift */,
 			);
 			path = DLWeather;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A69AC5222F6C8900B8CF5C /* WeatherServices.swift in Sources */,
 				D0A69AA5222F62AC00B8CF5C /* CurrentWeatherViewController.swift in Sources */,
 				D0A69AC3222F6BA300B8CF5C /* WeatherModel.swift in Sources */,
 				D0A69AA3222F62AC00B8CF5C /* AppDelegate.swift in Sources */,
