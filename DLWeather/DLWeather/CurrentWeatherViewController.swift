@@ -21,7 +21,7 @@ class CurrentWeatherViewController: UIViewController {
         super.viewDidLoad()
         locationManager.delegate = self
         loading.isHidden = true
-        
+    
         checkLocationPermission()
     }
 
@@ -38,6 +38,8 @@ class CurrentWeatherViewController: UIViewController {
         case .authorizedAlways, .authorizedWhenInUse:
             break
         }
+        loading.startAnimating()
+
         locationManager.startUpdatingLocation()
     }
 
@@ -50,7 +52,6 @@ class CurrentWeatherViewController: UIViewController {
     func showError() {
         
     }
-    
 
 }
 
@@ -59,9 +60,13 @@ extension CurrentWeatherViewController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         guard let location = locations.first else { return }
-        let long = location.coordinate.longitude
-        let lat = location.coordinate.latitude
+        let long = "\(location.coordinate.longitude)"
+        let lat = "\(location.coordinate.latitude)"
         
+        weatherModel.getCurrentWeatherFor(latitude: lat, longitude: long, successCompletionHandler: { () in
+           self.tempLabel.text = "\(self.weatherModel.weatherData.main.temp) ºF"
+            self.loading.stopAnimating()
+        })
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

@@ -16,18 +16,17 @@ enum WeatherServices {
 
 extension WeatherServices: TargetType {
     var baseURL: URL {
-        return URL(string: "https://api.openweathermap.org/data/2.5")!
+        return URL(string: "https://api.openweathermap.org/data/2.5/")!
     }
     
     var path: String {
         switch self {
-        case .currentLocationOneDayForcast(let apiKey, let lat, let long):
-            return "/forecast?lat=\(lat)&lon=\(long)&units=imperial&appid=\(apiKey)"
+        case .currentLocationOneDayForcast(_):
+            return "weather"
         case .currentLocationFiveDayForcast:
             return ""
         }
     }
-    
     var method: Moya.Method {
         return .get
     }
@@ -37,7 +36,13 @@ extension WeatherServices: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .currentLocationOneDayForcast(let apiKey, let latitude, let longitude):
+            let params: [String: String] = ["lat": latitude, "lon": longitude, "apiKey": apiKey, "units": "imperial"]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .currentLocationFiveDayForcast:
+            return .requestPlain
+        }
     }
     
     var headers: [String : String]? {
