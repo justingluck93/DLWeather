@@ -64,7 +64,7 @@ extension CurrentWeatherViewController: CLLocationManagerDelegate {
         let lat = "\(location.coordinate.latitude)"
         
         weatherModel.getCurrentWeatherFor(latitude: lat, longitude: long, successCompletionHandler: { () in
-           self.tempLabel.text = "\(self.weatherModel.weatherData.main.temp) ºF"
+           self.tempLabel.text = "\(Int(self.weatherModel.weatherData.main.temp.rounded())) ºF"
             self.loading.stopAnimating()
         })
     }
