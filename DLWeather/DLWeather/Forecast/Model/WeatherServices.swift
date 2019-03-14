@@ -11,7 +11,7 @@ import Moya
 
 enum WeatherServices {
     case currentLocationOneDayForcast(apiKey: String, latitude: String, longitude: String)
-    case currentLocationFiveDayForcast
+    case currentLocationFiveDayForcast(apiKey: String, latitude: String, longitude: String)
 }
 
 extension WeatherServices: TargetType {
@@ -23,8 +23,8 @@ extension WeatherServices: TargetType {
         switch self {
         case .currentLocationOneDayForcast(_):
             return "weather"
-        case .currentLocationFiveDayForcast:
-            return ""
+        case .currentLocationFiveDayForcast(_):
+            return "forecast"
         }
     }
     var method: Moya.Method {
@@ -40,8 +40,9 @@ extension WeatherServices: TargetType {
         case .currentLocationOneDayForcast(let apiKey, let latitude, let longitude):
             let params: [String: String] = ["lat": latitude, "lon": longitude, "apiKey": apiKey, "units": "imperial"]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
-        case .currentLocationFiveDayForcast:
-            return .requestPlain
+        case .currentLocationFiveDayForcast(let apiKey, let latitude, let longitude):
+            let params: [String: String] = ["lat": latitude, "lon": longitude, "apiKey": apiKey, "units": "imperial"]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     

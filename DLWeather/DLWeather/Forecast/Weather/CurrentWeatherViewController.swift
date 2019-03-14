@@ -20,11 +20,13 @@ class CurrentWeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-        loading.isHidden = true
+        loading.isHidden = false
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
         checkLocationPermission()
     }
-
+    
     func checkLocationPermission() {
         let permissionStatus = CLLocationManager.authorizationStatus()
         switch permissionStatus {
@@ -33,24 +35,24 @@ class CurrentWeatherViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
             return
         case .restricted, .denied:
-            showPermissionAlert()
+            showAlert(withMessage: "Please turn on location permission in settings")
             return
         case .authorizedAlways, .authorizedWhenInUse:
             break
         }
         loading.startAnimating()
 
+        updateLocation()
+    }
+    
+    func updateLocation() {
         locationManager.startUpdatingLocation()
     }
 
-    func showPermissionAlert() {
-        let alert = UIAlertController(title: "Permission Denied", message: "Please turn on location permission in settings", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    func showAlert(withMessage message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.updateLocation() }))
         self.present(alert, animated: true)
-    }
-    
-    func showError() {
-        
     }
 
 }
@@ -58,20 +60,23 @@ class CurrentWeatherViewController: UIViewController {
 extension CurrentWeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
-        
         guard let location = locations.first else { return }
         let long = "\(location.coordinate.longitude)"
         let lat = "\(location.coordinate.latitude)"
         
+        loading.startAnimating()
         weatherModel.getCurrentWeatherFor(latitude: lat, longitude: long, successCompletionHandler: { () in
-           self.tempLabel.text = "\(Int(self.weatherModel.weatherData.main.temp.rounded())) ºF"
+            self.tempLabel.text = "\(Int(self.weatherModel.weatherData.main.temp.rounded())) ºF"
             self.loading.stopAnimating()
+            self.loading.isHidden = true
+        }, failCompletionHandler: { (MoyaError) in
+            self.showAlert(withMessage: MoyaError.localizedDescription)
         })
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if ((status == .restricted) || (status == .denied)) {
-            showPermissionAlert()
+            showAlert(withMessage: "Please turn on location permission in settings")
         } else {
             locationManager.startUpdatingLocation()
         }

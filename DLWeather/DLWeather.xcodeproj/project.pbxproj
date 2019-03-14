@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2DE1F9CF83A56AC35D178B3B /* Pods_DLWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7370FD8C4C7A232AA37A14 /* Pods_DLWeather.framework */; };
 		8F53124E0B8B4A6A7E1F1AC6 /* Pods_DLWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84C56357E99C286035BCE63 /* Pods_DLWeatherTests.framework */; };
+		D03C4C392230C0DF00572AB9 /* FutureWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C382230C0DF00572AB9 /* FutureWeatherViewController.swift */; };
+		D03C4C44223324B200572AB9 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C4C43223324B200572AB9 /* WeatherTableViewCell.swift */; };
 		D0A69AA3222F62AC00B8CF5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A69AA2222F62AC00B8CF5C /* AppDelegate.swift */; };
 		D0A69AA5222F62AC00B8CF5C /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A69AA4222F62AC00B8CF5C /* CurrentWeatherViewController.swift */; };
 		D0A69AA8222F62AC00B8CF5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A69AA6222F62AC00B8CF5C /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		5CF1BB5BB5EB690E8EC23E96 /* Pods-DLWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLWeather.debug.xcconfig"; path = "Target Support Files/Pods-DLWeather/Pods-DLWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		730CC4526CC10C159FA54538 /* Pods-DLWeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLWeatherTests.debug.xcconfig"; path = "Target Support Files/Pods-DLWeatherTests/Pods-DLWeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D7370FD8C4C7A232AA37A14 /* Pods_DLWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D03C4C382230C0DF00572AB9 /* FutureWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureWeatherViewController.swift; sourceTree = "<group>"; };
+		D03C4C43223324B200572AB9 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		D0A69A9F222F62AC00B8CF5C /* DLWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A69AA2222F62AC00B8CF5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0A69AA4222F62AC00B8CF5C /* CurrentWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +83,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D03C4C4522349AC400572AB9 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				D03FABBE2236DE3400CF9F63 /* Weather */,
+				D03C4C4622349B0200572AB9 /* Model */,
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		D03C4C4622349B0200572AB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0A69AC2222F6BA300B8CF5C /* WeatherModel.swift */,
+				D0A69AC4222F6C8900B8CF5C /* WeatherServices.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D03FABBE2236DE3400CF9F63 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				D0A69AA4222F62AC00B8CF5C /* CurrentWeatherViewController.swift */,
+				D03C4C382230C0DF00572AB9 /* FutureWeatherViewController.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		D0A69A96222F62AC00B8CF5C = {
 			isa = PBXGroup;
 			children = (
@@ -102,14 +133,13 @@
 		D0A69AA1222F62AC00B8CF5C /* DLWeather */ = {
 			isa = PBXGroup;
 			children = (
+				D03C4C4522349AC400572AB9 /* Forecast */,
 				D0A69AA2222F62AC00B8CF5C /* AppDelegate.swift */,
-				D0A69AA4222F62AC00B8CF5C /* CurrentWeatherViewController.swift */,
 				D0A69AA6222F62AC00B8CF5C /* Main.storyboard */,
-				D0A69AA9222F62AC00B8CF5C /* Assets.xcassets */,
 				D0A69AAB222F62AC00B8CF5C /* LaunchScreen.storyboard */,
 				D0A69AAE222F62AC00B8CF5C /* Info.plist */,
-				D0A69AC2222F6BA300B8CF5C /* WeatherModel.swift */,
-				D0A69AC4222F6C8900B8CF5C /* WeatherServices.swift */,
+				D03C4C43223324B200572AB9 /* WeatherTableViewCell.swift */,
+				D0A69AA9222F62AC00B8CF5C /* Assets.xcassets */,
 			);
 			path = DLWeather;
 			sourceTree = "<group>";
@@ -311,7 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03C4C44223324B200572AB9 /* WeatherTableViewCell.swift in Sources */,
 				D0A69AC5222F6C8900B8CF5C /* WeatherServices.swift in Sources */,
+				D03C4C392230C0DF00572AB9 /* FutureWeatherViewController.swift in Sources */,
 				D0A69AA5222F62AC00B8CF5C /* CurrentWeatherViewController.swift in Sources */,
 				D0A69AC3222F6BA300B8CF5C /* WeatherModel.swift in Sources */,
 				D0A69AA3222F62AC00B8CF5C /* AppDelegate.swift in Sources */,
